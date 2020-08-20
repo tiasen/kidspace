@@ -1,10 +1,10 @@
 {
-  "name": "my-app",
+  "name": "kid-space",
   "author": "Tiasen",
   "license": "MIT",
   "version": "1.0.0",
   "private": true,
-  "description": "Taro TypeScript project template",
+  "description": "A mini app to help kid to recognize the world",
   "templateInfo": {
     "name": "redux",
     "typescript": true,

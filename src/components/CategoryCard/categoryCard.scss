@@ -1,0 +1,19 @@
+.category-card {
+  width: 650px;
+  height: 254px;
+  background: #78d642;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  image {
+    //padding-left: 40px;
+    height: 254px;
+  }
+  .name {
+    font-size: 48px;
+    color: #fff;
+    font-weight: bold;
+  }
+}

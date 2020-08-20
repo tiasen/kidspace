@@ -1,4 +1,7 @@
 .index {
   flex-direction: column;
-  width: 100%;
+  padding: 0 50px 50px;
+  .category-card-wrapper {
+    padding-top: 40px;
+  }
 }
