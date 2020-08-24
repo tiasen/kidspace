@@ -10,6 +10,6 @@ export default {
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black',
-    pageOrientation: 'landscape',
+    // pageOrientation: 'landscape',
   },
 };

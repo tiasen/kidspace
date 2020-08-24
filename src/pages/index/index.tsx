@@ -1,36 +1,49 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View } from '@tarojs/components';
-import { useDidShow, useDidHide, redirectTo } from '@tarojs/taro';
-
+import { redirectTo } from '@tarojs/taro';
+import { AtActivityIndicator } from 'taro-ui';
 import { CategoryCard } from '../../components/CategoryCard';
+import { Pages } from '../../app.config';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { CategoryState, getCategoryThunkAction } from './reducer';
 
 import './index.scss';
-import { Pages } from '../../app.config';
 
 type Props = {};
 
 const Index: React.FC<Props> = () => {
-  const categoryList = [1, 2, 3, 4, 5, 6];
-  useDidShow(() => {
-    console.log('show');
-  });
-  useDidHide(() => {
-    console.log('hide');
-  });
+  const { list: categoryList, isLoading } = useSelector<RootState, CategoryState>((state) => state.category);
 
-  const goToDetailsPage = useCallback(() => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!categoryList || categoryList?.length === 0) {
+      dispatch(getCategoryThunkAction());
+    }
+  }, [dispatch, categoryList]);
+
+  const goToDetailsPage = useCallback((id, name) => {
     redirectTo({
-      url: Pages.Details,
+      url: `${Pages.Details}?id=${id}&name=${name}`,
     });
   }, []);
 
   return (
     <View className="index">
-      {categoryList.map((item) => (
-        <View key={item} className="category-card-wrapper">
-          <CategoryCard onClick={goToDetailsPage} shouldRevertItem={item % 2 === 0} />
-        </View>
-      ))}
+      <AtActivityIndicator mode="center" isOpened={isLoading} />
+      {!isLoading &&
+        categoryList.map((item, index) => (
+          <View key={item._id} className="category-card-wrapper">
+            <CategoryCard
+              name={item.name}
+              image={item.image}
+              background={item.background}
+              onClick={() => goToDetailsPage(item._id, item.name)}
+              shouldRevertItem={index % 2 === 0}
+            />
+          </View>
+        ))}
     </View>
   );
 };

@@ -6,17 +6,20 @@ import './categoryCard.scss';
 type Props = {
   shouldRevertItem: boolean;
   onClick: () => void;
+  name: string;
+  image: string;
+  background: string;
 };
 
-const CategoryCard: React.FC<Props> = ({ onClick, shouldRevertItem = false }) => {
+const CategoryCard: React.FC<Props> = ({ name, image, background, onClick, shouldRevertItem = false }) => {
   const items = [
-    <Image key="image" mode="heightFix" src="https://img95.699pic.com/element/40127/3099.png_860.png" />,
+    <Image key="image" mode="heightFix" src={image} />,
     <Text key="name" className="name">
-      交通工具
+      {name}
     </Text>,
   ];
   return (
-    <View onClick={onClick} className="category-card">
+    <View onClick={onClick} className="category-card" style={{ background }}>
       {shouldRevertItem ? items.reverse() : items}
     </View>
   );

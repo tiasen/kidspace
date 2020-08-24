@@ -3,6 +3,7 @@
 	"projectname": "kidSpace",
 	"description": "Learn",
 	"appid": "wx8e17b2a6935990a3",
+  "cloudfunctionRoot": "./functions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
@@ -34,5 +35,6 @@
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"libVersion": "2.12.0",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {}
 }

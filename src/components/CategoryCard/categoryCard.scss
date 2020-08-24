@@ -1,15 +1,17 @@
 .category-card {
   width: 650px;
   height: 254px;
-  background: #78d642;
+  //background: #78d642;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 
   image {
     //padding-left: 40px;
     height: 254px;
+    min-width: 127px;
   }
   .name {
     font-size: 48px;
